@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatchFlow AI X | Smart Stadium Digital Twin</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="indexcss.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ========================= -->
+<!-- SIDEBAR -->
+<!-- ========================= -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<i class="fa-solid fa-futbol"></i>
+
+<h2>MatchFlow AI X</h2>
+
+<p>Smart Stadium</p>
+
+</div>
+
+<ul>
+
+<li class="active">
+<i class="fa-solid fa-chart-line"></i>
+Dashboard
+</li>
+
+<li>
+<i class="fa-solid fa-robot"></i>
+AI Copilot
+</li>
+
+<li>
+<i class="fa-solid fa-map-location-dot"></i>
+Stadium Map
+</li>
+
+<li>
+<i class="fa-solid fa-users"></i>
+Crowd Analytics
+</li>
+
+<li>
+<i class="fa-solid fa-video"></i>
+CCTV
+</li>
+
+<li>
+<i class="fa-solid fa-train-subway"></i>
+Mobility
+</li>
+
+<li>
+<i class="fa-solid fa-shield"></i>
+Security
+</li>
+
+<li>
+<i class="fa-solid fa-leaf"></i>
+Sustainability
+</li>
+
+<li>
+<i class="fa-solid fa-chart-pie"></i>
+Reports
+</li>
+
+<li>
+<i class="fa-solid fa-gear"></i>
+Settings
+</li>
+
+</ul>
+
+</aside>
+
+<!-- ========================= -->
+<!-- MAIN CONTENT -->
+<!-- ========================= -->
+
+<main>
+
+<header>
+
+<div>
+
+<h1>
+
+Smart Stadium Digital Twin
+
+</h1>
+
+<p>
+
+AI Powered Stadium Operations Center
+
+</p>
+
+</div>
+
+<div class="header-right">
+
+<button class="notification">
+
+<i class="fa-solid fa-bell"></i>
+
+<span>4</span>
+
+</button>
+
+<div class="admin">
+
+<img src="https://i.pravatar.cc/100">
+
+<div>
+
+<h4>Admin</h4>
+
+<p>Operations Manager</p>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ========================= -->
+<!-- KPI CARDS -->
+<!-- ========================= -->
+
+<section class="cards">
+
+<div class="card">
+
+<i class="fa-solid fa-users"></i>
+
+<h2 id="crowdCount">52,410</h2>
+
+<p>Visitors Inside</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+
+<h2 class="danger">
+
+HIGH
+
+</h2>
+
+<p>Risk Level</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-clock"></i>
+
+<h2>
+
+4 min
+
+</h2>
+
+<p>Average Wait</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-door-open"></i>
+
+<h2>
+
+14 / 18
+
+</h2>
+
+<p>Open Gates</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-cloud-sun"></i>
+
+<h2>
+
+28°C
+
+</h2>
+
+<p>Weather</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-bus"></i>
+
+<h2>
+
+Normal
+
+</h2>
+
+<p>Transport</p>
+
+</div>
+<div class="card">
+
+<i class="fa-solid fa-brain"></i>
+
+<h2 id="forecast">
+
+58,000
+
+</h2>
+
+<p>Predicted Crowd (30 min)</p>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- CHARTS -->
+<!-- ========================= -->
+
+<section class="analytics">
+
+<div class="panel">
+
+<h2>
+
+Live Crowd Analytics
+
+</h2>
+
+<canvas id="crowdChart"></canvas>
+
+</div>
+
+<div class="panel">
+
+<h2>
+
+Gate Occupancy
+
+</h2>
+
+<canvas id="gateChart"></canvas>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- STADIUM MAP -->
+<!-- ========================= -->
+
+<section class="stadium">
+
+<div class="panel large">
+
+<h2>
+
+Interactive Stadium Map
+
+</h2>
+
+<div id="map"></div>
+
+</div>
+
+<div class="panel">
+
+<h2>
+
+Live Alerts
+
+</h2>
+
+<div class="alert red">
+
+🚨 East Gate Congestion
+
+</div>
+
+<div class="alert orange">
+
+⚠ Medical Team Dispatched
+
+</div>
+
+<div class="alert green">
+
+✅ Parking Available
+
+</div>
+
+<div class="alert blue">
+
+🚆 Metro Running Normally
+
+</div>
+
+</div>
+
+</section>
+<section class="panel">
+
+    <h2>
+        <i class="fa-solid fa-people-group"></i>
+        AI Crowd Heatmap & Smart Evacuation
+    </h2>
+
+    <div class="heatmap-container">
+
+        <div class="stadium-heatmap">
+
+            <div id="zoneA" class="heat-zone green">
+                Gate A
+            </div>
+
+            <div id="zoneB" class="heat-zone yellow">
+                Gate B
+            </div>
+
+            <div id="zoneC" class="heat-zone red">
+                Gate C
+            </div>
+
+            <div id="zoneD" class="heat-zone green">
+                Gate D
+            </div>
+
+        </div>
+
+        <div class="heatmap-info">
+
+            <div class="info-card">
+                <h4>Most Congested</h4>
+                <h2 id="busyGate">Gate C</h2>
+            </div>
+
+            <div class="info-card">
+                <h4>Evacuation Route</h4>
+                <h2 id="evacRoute">Gate D</h2>
+            </div>
+
+            <div class="info-card">
+                <h4>Estimated Clearance</h4>
+                <h2 id="clearTime">12 min</h2>
+            </div>
+
+            <div class="info-card">
+                <h4>AI Decision</h4>
+
+                <p id="heatDecision">
+
+                    Redirect visitors from Gate C to Gate D.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="panel">
+
+    <h2>
+        <i class="fa-solid fa-helicopter"></i>
+        AI Drone Surveillance
+    </h2>
+
+    <div class="drone-panel">
+
+        <div class="drone-map">
+
+            <div class="stadium-area">
+
+                <div id="droneIcon" class="drone">
+                    🚁
+                </div>
+
+                <div class="gate gate-a">A</div>
+                <div class="gate gate-b">B</div>
+                <div class="gate gate-c">C</div>
+                <div class="gate gate-d">D</div>
+
+            </div>
+
+        </div>
+
+        <div class="drone-info">
+
+            <div class="info-card">
+                <h4>Current Location</h4>
+                <h2 id="droneLocation">Gate A</h2>
+            </div>
+
+            <div class="info-card">
+                <h4>Battery</h4>
+                <h2 id="batteryLevel">100%</h2>
+            </div>
+
+            <div class="info-card">
+                <h4>Flight Status</h4>
+                <h2 id="droneStatus">Patrolling</h2>
+            </div>
+
+            <div class="info-card">
+                <h4>AI Observation</h4>
+                <p id="droneObservation">
+
+                    No abnormal activity detected.
+
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ========================= -->
+<!-- AI COPILOT -->
+<!-- ========================= -->
+
+<section class="ai-section">
+
+    <div class="panel ai-panel">
+
+        <div class="panel-header">
+            <h2><i class="fa-solid fa-robot"></i> AI Operations Copilot</h2>
+            <span class="status online">ONLINE</span>
+        </div>
+
+        <div class="chat-box">
+
+            <div class="bot-msg">
+                👋 Welcome to MatchFlow AI.<br>
+                How can I assist today's stadium operations?
+            </div>
+
+            <div class="bot-msg">
+                ✔ Crowd density predicted to increase at Gate C in 18 minutes.
+            </div>
+
+            <div class="bot-msg">
+                💡 Recommendation:
+                Open Gate D and deploy 2 security teams.
+            </div>
+
+        </div>
+
+        <div class="chat-input">
+
+            <input
+                type="text"
+                placeholder="Ask AI about crowd, weather, transport..."
+            >
+
+            <button>
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ========================= -->
+<!-- AI COMMAND CENTER -->
+<!-- ========================= -->
+
+<section class="panel ai-command">
+
+    <h2>
+        <i class="fa-solid fa-brain"></i>
+        AI Decision Command Center
+    </h2>
+
+    <div class="command-grid">
+
+        <div class="command-card">
+            <h4>Risk Score</h4>
+            <h1 id="riskScore">32%</h1>
+        </div>
+
+        <div class="command-card">
+            <h4>Risk Level</h4>
+            <h1 id="aiRiskLevel" class="success">LOW</h1>
+        </div>
+
+        <div class="command-card">
+            <h4>Prediction Confidence</h4>
+            <h1 id="confidence">97%</h1>
+        </div>
+
+        <div class="command-card">
+            <h4>Affected Gate</h4>
+            <h1 id="riskGate">Gate C</h1>
+        </div>
+
+        <div class="command-card">
+            <h4>Congestion In</h4>
+            <h1 id="countdown">18 min</h1>
+        </div>
+
+        <div class="command-card">
+            <h4>Predicted Crowd</h4>
+            <h1 id="futureCrowd">58,420</h1>
+        </div>
+
+    </div>
+
+    <div class="recommendation-box">
+
+        <h3>
+            <i class="fa-solid fa-lightbulb"></i>
+            AI Recommendation
+        </h3>
+
+        <p id="recommendation">
+
+            Open Gate D immediately to reduce congestion
+            at Gate C. Deploy two security officers and
+            activate traffic diversion.
+
+        </p>
+
+    </div>
+
+</section>
+<!-- ========================= -->
+<!-- CCTV -->
+ <section class="panel">
+
+    <h2>
+        <i class="fa-solid fa-video"></i>
+        AI CCTV Surveillance Center
+    </h2>
+
+    <div class="cctv-grid">
+
+        <div class="camera-card">
+
+            <div class="camera-header">
+                Camera 01
+                <span class="live-dot"></span>
+            </div>
+
+            <div class="camera-feed">
+
+                <img
+                id="cam1"
+                src="https://picsum.photos/500/300?random=1"
+                alt="camera">
+
+                <div class="ai-tag normal">
+                    Normal
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="camera-card">
+
+            <div class="camera-header">
+                Camera 02
+                <span class="live-dot"></span>
+            </div>
+
+            <div class="camera-feed">
+
+                <img
+                id="cam2"
+                src="https://picsum.photos/500/300?random=2"
+                alt="camera">
+
+                <div
+                id="camStatus2"
+                class="ai-tag warning">
+
+                    Crowd Rising
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="camera-card">
+
+            <div class="camera-header">
+                Camera 03
+                <span class="live-dot"></span>
+            </div>
+
+            <div class="camera-feed">
+
+                <img
+                id="cam3"
+                src="https://picsum.photos/500/300?random=3"
+                alt="camera">
+
+                <div
+                id="camStatus3"
+                class="ai-tag success">
+
+                    Safe
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="camera-card">
+
+            <div class="camera-header">
+                Camera 04
+                <span class="live-dot"></span>
+            </div>
+
+            <div class="camera-feed">
+
+                <img
+                id="cam4"
+                src="https://picsum.photos/500/300?random=4"
+                alt="camera">
+
+                <div
+                id="camStatus4"
+                class="ai-tag">
+
+                    Monitoring
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ========================= -->
+
+<section class="camera-grid">
+
+<div class="panel">
+
+<h2>Live CCTV Monitoring</h2>
+
+<div class="camera-card">
+
+<div class="camera-status online"></div>
+
+<h3>Camera 01</h3>
+
+<p>Main Entrance</p>
+
+</div>
+
+<div class="camera-card">
+
+<div class="camera-status warning"></div>
+
+<h3>Camera 02</h3>
+
+<p>Heavy Crowd</p>
+
+</div>
+
+<div class="camera-card">
+
+<div class="camera-status danger"></div>
+
+<h3>Camera 03</h3>
+
+<p>Emergency Zone</p>
+
+</div>
+
+<div class="camera-card">
+
+<div class="camera-status online"></div>
+
+<h3>Camera 04</h3>
+
+<p>Parking Area</p>
+
+</div>
+
+</div>
+
+<!-- Emergency -->
+
+<div class="panel">
+
+<h2>Emergency Center</h2>
+
+<div class="emergency-list">
+
+<div class="emergency-card fire">
+
+🔥 Fire Response
+
+<span>Normal</span>
+
+</div>
+
+<div class="emergency-card medical">
+
+🚑 Medical Team
+
+<span>2 Active Cases</span>
+
+</div>
+
+<div class="emergency-card security">
+
+🛡 Security
+
+<span>Monitoring</span>
+
+</div>
+
+<div class="emergency-card evacuation">
+
+🚪 Evacuation
+
+<span>Ready</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- TRANSPORT -->
+<!-- ========================= -->
+
+<section class="transport-grid">
+
+<div class="panel">
+
+<h2>Transportation</h2>
+
+<div class="transport-item">
+
+<i class="fa-solid fa-train-subway"></i>
+
+<div>
+
+<h4>Metro</h4>
+
+<p>Running On Time</p>
+
+</div>
+
+<span class="green">98%</span>
+
+</div>
+
+<div class="transport-item">
+
+<i class="fa-solid fa-bus"></i>
+
+<div>
+
+<h4>Bus</h4>
+
+<p>Minor Delay</p>
+
+</div>
+
+<span class="orange">7 min</span>
+
+</div>
+
+<div class="transport-item">
+
+<i class="fa-solid fa-car"></i>
+
+<div>
+
+<h4>Parking</h4>
+
+<p>Available</p>
+
+</div>
+
+<span class="green">62%</span>
+
+</div>
+
+<div class="transport-item">
+
+<i class="fa-solid fa-taxi"></i>
+
+<div>
+
+<h4>Ride Sharing</h4>
+
+<p>Available</p>
+
+</div>
+
+<span class="green">Normal</span>
+
+</div>
+
+</div>
+
+<!-- Sustainability -->
+
+<div class="panel">
+
+<h2>Sustainability</h2>
+
+<div class="eco-card">
+
+<h3>Solar Energy</h3>
+
+<h1>84%</h1>
+
+</div>
+
+<div class="eco-card">
+
+<h3>Water Recycled</h3>
+
+<h1>12,450 L</h1>
+
+</div>
+
+<div class="eco-card">
+
+<h3>Carbon Saved</h3>
+
+<h1>2.8 Tons</h1>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- OPERATIONS LOG -->
+<!-- ========================= -->
+
+<section class="panel">
+
+<h2>
+
+Operations Activity Log
+
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Time</th>
+
+<th>Event</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>18:05</td>
+
+<td>Gate B Opened</td>
+
+<td><span class="green">Completed</span></td>
+
+</tr>
+
+<tr>
+
+<td>18:14</td>
+
+<td>Medical Team Dispatched</td>
+
+<td><span class="orange">Active</span></td>
+
+</tr>
+
+<tr>
+
+<td>18:25</td>
+
+<td>AI Crowd Alert</td>
+
+<td><span class="red">High</span></td>
+
+</tr>
+
+<tr>
+
+<td>18:40</td>
+
+<td>Metro Delay</td>
+
+<td><span class="orange">Warning</span></td>
+
+</tr>
+
+<tr>
+
+<td>18:45</td>
+
+<td>Parking Updated</td>
+
+<td><span class="green">Normal</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+<!-- ========================= -->
+<!-- NOTIFICATION PANEL -->
+<!-- ========================= -->
+
+<section class="bottom-grid">
+
+    <div class="panel">
+
+        <h2>Recent Notifications</h2>
+
+        <div class="notification-card">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+                <h4>Gate A Cleared</h4>
+                <p>2 minutes ago</p>
+            </div>
+        </div>
+
+        <div class="notification-card">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>
+                <h4>High Crowd at Gate C</h4>
+                <p>5 minutes ago</p>
+            </div>
+        </div>
+
+        <div class="notification-card">
+            <i class="fa-solid fa-train-subway"></i>
+            <div>
+                <h4>Metro Delay Updated</h4>
+                <p>10 minutes ago</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Weather -->
+
+    <div class="panel">
+
+        <h2>Weather</h2>
+
+        <div class="weather-card">
+
+            <i class="fa-solid fa-cloud-sun"></i>
+
+            <h1>28°C</h1>
+
+            <p>Sunny</p>
+
+            <div class="weather-info">
+
+                <div>
+                    <h4>Humidity</h4>
+                    <p>62%</p>
+                </div>
+
+                <div>
+                    <h4>Wind</h4>
+                    <p>14 km/h</p>
+                </div>
+
+                <div>
+                    <h4>Rain</h4>
+                    <p>5%</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
+
+<footer>
+
+    <div>
+
+        <h3>MatchFlow AI X</h3>
+
+        <p>AI Powered Smart Stadium Digital Twin</p>
+
+    </div>
+
+    <div>
+
+        <p>
+
+            © 2026 MatchFlow AI X
+
+        </p>
+
+    </div>
+
+</footer>
+
+</main>
+
+</div>
+
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+
+<script src="charts.js"></script>
+<script src="map.js"></script>
+<script src="chatbot.js"></script>
+<script src="notifications.js"></script>
+<script src="ai.js"></script>
+<script src="ai-command.js"></script>
+<script src="indexjs.js"></script>
+<script type="module" src="firebase.js"></script>
+
+
+
+charts.js
+map.js
+chatbot.js
+notifications.js
+ai.js
+indexjs.js
+firebase.js
+</body>
+
+</html>
